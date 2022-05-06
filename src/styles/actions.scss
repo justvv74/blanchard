@@ -1,0 +1,552 @@
+@import 'variables';
+@import 'mixin';
+
+.header {
+  &__burger-btn {
+    &:focus {
+      outline: none;
+      color: $colorBtn;
+    }
+
+    &:hover {
+      color: $colorBtn;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+    }
+  }
+
+  &__menu-close {
+    &:focus {
+      outline: none;
+      color: $colorBtn;
+    }
+
+    &:hover {
+      color: $colorBtn;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+    }
+  }
+
+  &__mobile-link {
+    &:focus {
+      @include focus;
+    }
+
+    &:hover {
+      color: $colorFocus;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+  }
+
+  &__mobile-login {
+    &:focus{
+      outline: 2px solid $colorFocus;
+      outline-offset: 5px;
+    }
+
+    &:hover {
+      border-color: $colorFocusLight;
+    }
+
+    &:active {
+      border-color: $colorFocusLight;
+      background-color: $colorFocusDark;
+      outline: none
+    }
+  }
+
+  &__logo-box:focus {
+    outline: 2px solid  $colorFocus;
+    outline-offset: 5px;
+  }
+
+  &__link {
+    &:focus {
+      @include focus;
+    }
+
+    &:hover {
+      color: $colorFocus;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+  }
+
+  &__mobile-search-open {
+    &:focus {
+      outline: none;
+      color: $colorBtn;
+    }
+
+    &:hover {
+      color: $colorBtn;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+    }
+  }
+
+  &__mobile-search-btn {
+    &:focus {
+      outline: none;
+      color: $colorBtn;
+    }
+
+    &:hover {
+      color: $colorBtn;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+    }
+  }
+
+  &__mobile-search-input {
+    &:focus {
+      border-color: $colorFocus;
+      outline: none;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    &:hover {
+      border-color: $colorFocus;
+    }
+
+    &:active {
+      border-color: $colorFocus;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+
+  &__mobile-search-close {
+    &:focus {
+      outline: none;
+      color: $colorBtn;
+    }
+
+    &:hover {
+      color: $colorBtn;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+    }
+  }
+
+  &__login {
+    &:focus {
+      @include focus;
+    }
+
+    &:hover {
+      color: $colorBtn;
+
+      & svg {
+        color: $colorBtn;
+      }
+    }
+
+    &:active {
+      color: $colorFocusDark;
+      background-color: transparent;
+
+      & svg {
+        color: $colorFocusDark;
+      }
+    }
+  }
+
+  &__bottom-btn {
+    &:focus {
+      @include focus;
+    }
+
+    &:hover {
+      color: $colorBtn;
+
+      & svg {
+        color: $colorBtn;
+      }
+    }
+
+    &:active {
+      color: $colorFocusDark;
+      background-color: transparent;
+
+      & svg {
+        color: $colorFocusDark;
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  &__drpdwn-item   {
+    &:focus-within {
+      background-color: #D88F99;
+      outline: 2px solid $colorBtn;
+
+      & a {
+        outline: none;
+      }
+
+      & img {
+        opacity: .8;
+      }
+    }
+
+    &:hover {
+      outline: 2px solid $colorBtn;
+    }
+
+    &:active {
+      background: rgba(194, 131, 243, 1);
+      outline: 2px solid $colorFocusLight;
+
+      & img {
+        opacity: .4;
+      }
+    }
+  }
+
+  &__search-btn {
+    &:focus {
+      outline: none;
+      color: $colorBtn;
+    }
+
+    &:hover {
+      color: $colorBtn;
+    }
+
+    &:active {
+      color: $colorFocusDark;
+    }
+  }
+
+  &__search-input {
+    &:focus {
+      border-color: $colorFocus;
+      outline: none;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+
+    &:hover {
+      border-color: $colorFocus;
+    }
+
+    &:active {
+      border-color: $colorFocus;
+
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+}
+
+.section-hero {
+  &__btn {
+    &:focus{
+      outline: 2px solid $colorFocus;
+      outline-offset: 5px;
+    }
+
+    &:hover {
+      border-color: $colorFocusLight;
+    }
+
+    &:active {
+      border-color: $colorFocusLight;
+      background-color: $colorFocusDark;
+      outline: none
+    }
+  }
+}
+
+.section-gallery {
+  &__checkbox-label {
+    &:focus-within {
+      color: $colorFocus;
+    }
+
+    &:hover {
+      color: $colorFocus;
+
+      & .section-gallery__checkbox-container {
+        border-color: $colorFocus;
+      }
+    }
+
+
+  }
+
+  &__nav-btn {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__slide {
+    &:focus {
+      outline: 3px solid $colorFocusDark;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    &:active img {
+      opacity: .6;
+    }
+  }
+}
+
+.section-catalog {
+  &__item-link {
+    &:focus {
+      background-color: $colorFocus;
+      outline: none;
+    }
+
+    &:hover {
+      color: $colorFocusDark;
+    }
+
+    &:active {
+      color: $colorTextDark;
+      background-color: transparent;
+    }
+  }
+
+  &__item-head {
+    &:focus {
+      outline: none;
+
+      & h3 {
+        color: $colorTextLight;
+        background-color: $colorBtn;
+      }
+    }
+
+    &:hover {
+      color: $colorBtn;
+      border-color: $colorBtn;
+    }
+
+    &:active {
+      border-color: $colorFocusDark;
+
+      & h3 {
+        color: $colorFocusDark;
+        background-color: transparent;
+      }
+    }
+
+  }
+
+  &__item-head_first-item {
+    &:hover {
+      border-color: $colorBtn;
+    }
+
+    &:active {
+      border-color: $colorFocusDark;
+    }
+  }
+
+
+  &__item-btn {
+    &:focus {
+      color: $colorTextLight;
+      background-color: $colorFocus;
+      outline: none;
+    }
+
+    &:hover {
+      border-bottom: 1px solid $colorBtn;
+      color: $colorBtn;
+    }
+
+    &:active {
+      border-color: transparent;
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+  }
+}
+
+.section-events {
+  &__art-link {
+    &:focus {
+      color: $colorTextLight;
+      background-color: $colorBtn;
+      outline: none;
+
+      & span {
+        border-color: $colorTextLight;
+      }
+    }
+
+    &:hover {
+      color: $colorFocusDark;
+
+      & span {
+        border-color: $colorFocusDark;
+      }
+    }
+
+    &:active {
+      color: $colorTextDark;
+
+      & span {
+        border-color: $colorTextDark;
+      }
+    }
+  }
+}
+
+.section-projects {
+  &__text-link {
+    &:focus {
+      color: $colorTextLight;
+      background-color: $colorFocus;
+      outline: none;
+    }
+
+    &:hover {
+      border-bottom: 1px solid $colorBtn;
+      color: $colorBtn;
+    }
+
+    &:active {
+      border-color: $colorFocusDark;
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+  }
+
+  &__partners-box {
+    &:focus {
+      border-color: $colorBtn;
+      outline: none;
+    }
+
+    &:hover img {
+      filter: opacity(1) grayscale(0);
+    }
+
+    &:active {
+      border-color: $colorBtn;
+      filter: opacity(1) grayscale(0);
+      outline: none;
+    }
+  }
+
+  &__nav-btn {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.section-feedback {
+  &__input{
+    &:focus {
+      outline: none;
+      background-color: #eaeaea;
+    }
+
+    &:hover {
+      background-color: #eaeaea;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &__form-btn {
+    &:focus {
+      outline: 2px solid $colorFocus;
+      outline-offset: 5px;
+    }
+
+    &:hover {
+      color: $colorTextLight;
+      background-color: $colorBtn;
+    }
+
+    &:active {
+      border-color: $colorFocusLight;
+      background-color: $colorFocusDark;
+      outline: none;
+    }
+  }
+
+  &__social-link {
+    &:focus {
+      opacity: .4;
+      outline: none;
+    }
+
+    &:hover {
+      opacity: .4;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+}
+
+.footer {
+  &__logo-box:focus {
+    outline: 1px solid $colorFocus;
+    outline-offset: 5px;
+  }
+
+  &__social-link {
+    &:focus {
+      outline: none;
+    }
+
+    &:focus svg {
+      color: $colorTextLight;
+    }
+
+    &:hover svg {
+      color: $colorTextLight;
+    }
+
+    &:active svg {
+      color: $colorBtn;
+    }
+  }
+}
+

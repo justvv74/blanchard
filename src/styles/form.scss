@@ -1,0 +1,25 @@
+@import 'variables';
+
+.form-message {
+  z-index: 100;
+  position: fixed;
+  left: 50px;
+  bottom: 50px;
+  padding: 20px;
+  border: 1px solid $colorTextDark;
+  border-radius: 10px;
+  color: $colorTextLight;
+  background-color: $colorBtn;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .1s linear, visibility 1s linear;
+}
+
+.form-message-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.error {
+  border-color: red !important;
+}

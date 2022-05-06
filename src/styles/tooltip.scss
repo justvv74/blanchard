@@ -1,0 +1,21 @@
+@import 'variables';
+
+.tooltipster-sidetip .tooltipster-box {
+  background-color: $colorBtn;
+}
+
+.tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-background {
+  border-bottom-color:$colorBtn;
+}
+
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-background {
+  border-top-color:$colorBtn;
+}
+
+.tooltipster-sidetip.tooltipster-right .tooltipster-arrow-background {
+  border-right-color: $colorBtn;
+}
+
+.tooltipster-sidetip.tooltipster-left .tooltipster-arrow-background {
+  border-left-color: $colorBtn;
+}

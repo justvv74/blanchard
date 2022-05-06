@@ -1,0 +1,16 @@
+@import 'variables';
+
+@mixin transition {
+  transition-property: border, border-color, color, background, background-color, opacity, outline, filter, transform, visibility, right;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+
+@mixin transitionSvg {
+  transition: transform .2s ease;
+}
+
+@mixin focus {
+  background-color: $colorFocusDark;
+  outline: none;
+}

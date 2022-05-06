@@ -1,0 +1,20 @@
+.ui-accordion .ui-accordion-header {
+  display: flex;
+  margin: 0;
+  padding: 32px 0 31px;
+}
+
+.ui-accordion .ui-accordion-content {
+  padding: 26px 0 24px;
+}
+
+
+@media (max-width: 440px) {
+  .ui-accordion .ui-accordion-header {
+    padding: 21px 0;
+  }
+
+  .ui-accordion .ui-accordion-content {
+    padding: 21px 0 19px;
+  }
+}

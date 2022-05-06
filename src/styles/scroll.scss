@@ -1,0 +1,32 @@
+@import 'variables';
+
+.simplebar-track {
+  right: 19px;
+  margin: 40px 0;
+  background-color: #000;
+}
+
+.simplebar-scrollbar {
+  background-color: #fff;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 2px;
+}
+
+
+.modal__box .simplebar-track {
+  margin: 100px 0;
+  background-color: $colorBorder;
+}
+
+.modal__box .simplebar-scrollbar {
+  background-color: $colorFocusDark;
+}
+
+@media (max-width: 768px) {
+  .modal__box .simplebar-track {
+    right: 5px;
+    margin: 20px 0;
+  }
+}

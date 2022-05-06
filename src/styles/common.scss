@@ -1,0 +1,1173 @@
+@import 'variables';
+@import 'mixin';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  font-family: 'open-sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+  color: $colorTextDark;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 160px;
+  max-width: 1920px;
+}
+
+.flex {
+  display: flex;
+}
+
+.reset {
+  margin: 0;
+  padding: 0;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.btn {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 65.37px;
+}
+
+input[type=text]::-ms-clear,
+input[type=text]::-ms-reveal {
+  display: none;
+  width : 0;
+  height: 0;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.header {
+  position: relative;
+  &__top {
+    padding: 30px 0;
+    background-color: #000;
+  }
+
+  &__container {
+    justify-content: space-between;
+  }
+
+  &__desktop-col {
+    flex: auto;
+    justify-content: space-between;
+    max-width: 1106px;
+  }
+
+  &__burger-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+
+    & svg {
+      width: 37px;
+      height: 29px;
+    }
+  }
+
+  &__mobile-menu {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .9);
+    visibility: hidden;
+    opacity: 0;
+    @include transition;
+
+    &-active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__menu-close {
+    margin-bottom: 16px;
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+  }
+
+  &__mobile-nav {
+    margin-bottom: auto;
+  }
+
+  &__mobile-link {
+    font-weight: 600;
+    color: $colorTextLight;
+    @include transition;
+  }
+
+  &__mobile-login {
+    border: 2px solid $colorBtn;
+    border-radius: 100px;
+    line-height: 16.34px;
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+  }
+
+  &__logo-box {
+    margin-right: 50px;
+    width: 173px;
+    height: 40px;
+    @include transition;
+
+    & svg {
+      width: 173px;
+      height: 40px;
+    }
+  }
+
+  &__nav {
+    flex: auto;
+    margin-top: -1px;
+    max-width: 754px;
+  }
+
+  &__list {
+    flex: auto;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__link {
+    display: flex;
+    margin: 0 -6px;
+    padding: 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 40px;
+    color: $colorTextLight;
+    @include transition;
+  }
+
+  &__mobile-search-open {
+    display: none;
+    margin-right: 5px;
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+
+    & svg {
+      width: 29.45px;
+      height: 28.82px;
+    }
+  }
+
+  &__mobile-search-box {
+    position: absolute;
+    top: 0;
+    right: 49px;
+    align-items: center;
+    height: 100%;
+    background-color: #000;
+    visibility: hidden;
+    opacity: 0;
+    @include transition;
+
+    &-active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__mobile-search-btn {
+    margin-right: 5px;
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+
+    & svg {
+      width: 29.45px;
+      height: 28.82px;
+    }
+  }
+
+  &__mobile-search-input {
+    margin-right: 5px;
+    border: none;
+    border-bottom: 1px solid $colorTextLight;
+    width: 218px;
+    color: $colorTextLight;
+    background-color: transparent;
+    @include transition;
+    outline: none;
+    appearance: none;
+  }
+
+  &__mobile-search-close {
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      color: $colorTextLight;
+    }
+  }
+
+
+  &__login {
+    margin: 0 -6px;
+    margin-top: -2px;
+    margin-right: -7px;
+    margin-left: 32px;
+    border: none;
+    padding: 0 6px;
+    font-size: 18px;
+    line-height: 40px;
+    color: $colorTextLight;
+    background-color: transparent;
+    cursor: pointer;
+    @include transition;
+
+    & svg {
+      margin-right: 3px;
+      width: 13px;
+      height: 13px;
+      @include transition;
+    }
+  }
+
+  &__bottom {
+    z-index: 10;
+    position: absolute;
+    padding: 20px 0 18.5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  &__bottom-list {
+    flex: auto;
+    justify-content: space-between;
+    margin-right: 50px;
+    margin-left: -1.5px;
+    max-width: 1036px;
+  }
+
+  &__bottom-item {
+    position: relative;
+    margin: 0 -6px;
+
+  }
+
+
+  &__bottom-btn {
+    border: none;
+    padding: 0 6px;
+    font-size: 18px;
+    color: $colorTextLight;
+    background-color: transparent;
+    cursor: pointer;
+    @include transition;
+
+    & svg {
+      margin-left: -2px;
+      width: 12px;
+      height: 10px;
+      color: $colorTextLight;
+      @include transition;
+      @include transitionSvg;
+    }
+
+    &--active {
+      color: $colorTextLight;
+      background-color: transparent;
+
+      & svg {
+        color: $colorTextLight;
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  &__drpdwn-menu {
+    z-index: 100;
+    position: absolute;
+    top: 50px;
+    display: none;
+    padding: 40px;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, .6);
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__drpdwn-item {
+    position: relative;
+    padding: 4px 15px;
+    width: 220px;
+    height: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    @include transition;
+    outline: 2px solid transparent;
+
+    &:not(:last-child){
+      margin-bottom: 20px;
+    }
+  }
+
+  &__drpdwn-link {
+    color: $colorTextLight;
+  }
+
+  &__drpdwn-descr {
+    z-index: 100;
+    position: relative;
+  }
+
+  &__drpdwn-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__search-box {
+    align-items: center;
+    margin-top: 4.5px;
+  }
+
+  &__search-btn {
+    color: $colorTextLight;
+    @include transition;
+    cursor: pointer;
+
+    & svg {
+      margin-right: 5px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__search-input {
+    border: none;
+    border-bottom: 1px solid $colorTextLight;
+    padding-bottom: 4px;
+    width: 222px;
+    min-width: 110px;
+    color: $colorTextLight;
+    background-color: transparent;
+    cursor: pointer;
+    @include transition;
+    appearance: none;
+
+    &::placeholder {
+      font-size: 18px;
+      line-height: 24.52px;
+      color: $colorTextLight;
+    }
+  }
+}
+
+.section-hero {
+  position: relative;
+  padding: 140px 0 122px;
+
+  &__container {
+    z-index: 9;
+    position: relative;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    max-width: 600px;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 82.8px;
+    color: $colorTextLight;
+  }
+
+  &__text {
+    margin-bottom: 93px;
+    max-width: 600px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 30px;
+    color: $colorTextLight;
+  }
+
+  &__btn {
+    border: 3px solid transparent;
+    border-radius: 100px;
+    padding: 21.5px 32.5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: $colorTextLight;
+    background-color: $colorBtn;
+    cursor: pointer;
+    @include transition;
+  }
+
+  &__swiper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__swiper-slide {
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__swiper-slide_first {
+    background-image: url('img/hero-1-1920.jpg');
+  }
+
+  &__swiper-slide_second {
+    background-image: url('img/hero-2-1920.jpg');
+  }
+
+  &__swiper-slide_third {
+    background-image: url('img/hero-3-1920.jpg');
+  }
+
+}
+
+.section-about-us {
+  padding: 80px 0 70px;
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    max-width: 1080px;
+  }
+}
+
+.section-gallery {
+  padding: 80px 0;
+  background-image: url('img/gal-bckgrnd.jpg');
+
+  &__container {
+    justify-content: space-between;
+  }
+
+  &__first-col {
+    flex: 2 1 auto;
+    flex-direction: column;
+    margin-right: 50px;
+    padding-bottom: 8px;
+    max-width: 400px;
+    min-width: 280px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    color: $colorTextLight;
+  }
+
+  &__filter-box {
+    flex: 2 1 auto;
+    flex-direction: column;
+  }
+
+  &__filter-descr {
+    flex-direction: column;
+    margin-bottom: auto;
+    color: $colorTextLight;
+  }
+
+  &__filter-select {
+    line-height: 16px;
+  }
+
+  &__checkbox-label {
+    position: relative;
+    display: block;
+    line-height: 16px;
+    color: $colorTextLight;
+    cursor: pointer;
+    @include transition;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__checkbox {
+    padding-left: 20px;
+    appearance: none;
+    opacity: 0;
+
+    &:focus + .section-gallery__checkbox-container {
+      border: 1px solid $colorFocus;
+    }
+
+    &:checked + .section-gallery__checkbox-container {
+      border: 1px solid $colorFocus;
+      background-image: url('img/sprite.svg#checkbox-point');
+    }
+
+    &:checked ~ .section-gallery__checkbox-descr {
+      color: $colorFocus;
+    }
+  }
+
+  &__checkbox-container {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    border: 1px solid $colorTextLight;
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 2.5px 2.8px;
+    background-size: 5px;
+    overflow: hidden;
+    @include transition;
+  }
+
+  &__second-col {
+    position: relative;
+    flex: 1 1 auto;
+    padding-top: 85px;
+    max-width: 1150px;
+    overflow: hidden;
+  }
+
+  &__swiper {
+    width: 100%;
+    max-height: 350px;
+  }
+
+  &__slide {
+    position: relative;
+    line-height: 0;
+    background-color: $colorFocus;
+    cursor: pointer;
+    @include transition;
+
+    &::after {
+      z-index: 100;
+      content: '';
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      bottom: 25px;
+      left: 25px;
+      background-color: rgba(0, 0, 0, .5);
+      opacity: 0;
+      @include transition;
+    }
+
+    &::before {
+      z-index: 101;
+      content: url('img/sprite.svg#zoom');
+      position: absolute;
+      top: 40%;
+      right: 40%;
+      bottom: 40%;
+      left: 40%;
+      opacity: 0;
+      @include transition;
+    }
+  }
+
+  &__btn-box {
+    z-index: 10;
+    position: absolute;
+    top: 24px;
+    left: 2px;
+    justify-content: space-between;
+    align-items: center;
+    width: 132px;
+    height: 32px;
+  }
+
+  &__button-next {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    & svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__button-prev {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    & svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__pagination {
+    justify-content: center;
+    color: $colorTextLight;
+    letter-spacing: 4px;
+  }
+}
+
+.section-catalog {
+  padding: 80px 0;
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    margin-bottom: 39px;
+    max-width: 1080px;
+  }
+
+  &__first-col {
+    flex: 2 1 auto;
+    margin-right: 50px;
+    max-width: 750px;
+  }
+
+  &__art-box {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__art-img {
+    width: 100%;
+    & img {
+      margin-bottom: 21px;
+    }
+
+    &_absent {
+      margin-bottom: 30px;
+      width: 100%;
+      height: 470px;
+      background-color: #ececec;
+
+      & svg {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__art-title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__art-date {
+    font-size: 12px;
+    line-height: 16.24px;
+    color: $colorTextDescr;
+  }
+
+  &__art-descr {
+    margin-top: -1px;
+  }
+
+  &__second-col {
+    flex: 1 1 auto;
+  }
+
+  &__list {
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  &__item:not(:first-child) {
+    margin-top: -1px;
+  }
+
+  &__item-head {
+    justify-content: space-between;
+    flex: 1 1 auto;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid $colorBorder;
+    padding: 32px 0;
+    border-collapse: collapse;
+    @include transition;
+
+    &:not(:first-child) {
+        margin-top: -1px;
+      }
+
+    & svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__item-head_first-item {
+    border-top: 1px solid $colorBorder;
+    @include transition;
+  }
+
+  &__item-title {
+    margin-top: 1px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 50px;
+    @include transition;
+  }
+
+
+
+  &__item-box {
+    flex: 1 1 auto;
+    border-bottom: 1px solid $colorBorder;
+
+  }
+
+  &__box-list {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1px 60px;
+    max-height: 318px;
+  }
+
+  &__box-item {
+    max-width: 226px;
+  }
+
+  &__item-btn {
+    border-bottom: 1px solid transparent;
+    padding: 4px 0;
+    line-height: 31px;
+    color: $colorTextDark;
+
+    &--active {
+      border-color: transparent;
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+  }
+
+  &__item-img {
+    margin-right: 25px;
+    border: 2px solid #b7b7b7;
+    padding: 12px;
+    width: 275px;
+    height: 189px;
+  }
+
+  &__item-text-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 280px;
+  }
+
+  &__item-text  {
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  &__item-descr {
+    margin-bottom: 5px;
+  }
+
+  &__item-link {
+    color: $colorBtn;
+  }
+}
+
+.section-events {
+  padding-top: 1px;
+  padding-bottom: 20px;
+
+  &__container {
+    position: relative;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__swiper {
+    overflow: hidden;
+  }
+
+  &__art {
+    flex-direction: column;
+    max-width: 500px;
+    min-height: 700px;
+  }
+
+  &__img {
+    line-height: 0;
+  }
+
+  &__content-box {
+    flex: 2 2 auto;
+    flex-direction: column;
+    border: 1px solid $colorBorder;
+    height: 100%;
+    padding: 11px 49px 40px;
+  }
+
+  &__img-descr {
+    margin-bottom: 12px;
+    padding-top: 2px;
+    font-size: 12.6px;
+    line-height: 16.34px;
+    color: $colorTextDescr;
+  }
+
+  &__img-time {
+    display: block;
+    margin-top: -1px;
+    font-size: 12.3px;
+  }
+
+  &__art-title {
+    margin-bottom: 1px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 34px;
+  }
+
+  &__art-text {
+    margin-bottom: auto;
+  }
+
+  &__art-link {
+    align-self: flex-start;
+    margin: 0 0 -2px -8px;
+    padding: 0 8px 2px;
+    color: $colorBtn;
+
+    & span {
+      padding-bottom: 2px;
+      border-bottom: 1px solid $colorBtn;
+    }
+  }
+
+  &__button-prev {
+    z-index: 10;
+    position: absolute;
+    top: 408px;
+    left: 135px;
+    cursor: pointer;
+    @include transition;
+
+    & svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__button-next {
+    z-index: 10;
+    position: absolute;
+    top: 408px;
+    right: 135px;
+    cursor: pointer;
+    @include transition;
+
+    & svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__pagination-box {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    margin-left: -22px;
+  }
+
+  &__pagination {
+    gap: 0 7px;
+
+  }
+}
+
+.section-projects {
+  padding-top: 60px;
+  padding-bottom: 80px;
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+    max-width: 1080px;
+  }
+
+  &__text-link {
+    color: $colorBtn;
+    @include transition;
+  }
+
+  &__tooltip {
+    margin: 0 2px -3px -1px;
+    margin-left: -1px;
+    cursor: pointer;
+
+    svg{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__second-title {
+    margin-bottom: 23px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  &__swiper-box {
+    position: relative;
+    padding: 0 75px;
+  }
+
+  &__swiper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__partners-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $colorBorder;
+    padding: 5px;
+    max-width: 450px;
+    height: 150px;
+    cursor: pointer;
+    @include transition;
+
+    & img {
+      width: auto;
+      height: auto;
+      overflow: hidden;
+      filter: opacity(.3) grayscale(100%);
+      @include transition;
+    }
+  }
+
+  &__button-prev {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -15px;
+    cursor: pointer;
+
+    & svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__button-next {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -15px;
+    cursor: pointer;
+
+    & svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.section-feedback {
+  padding: 42px 0 28px;
+  border: 1px solid $colorBorder;
+
+  &__container {
+    justify-content: space-between;
+  }
+
+  &__addr-title {
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  &__addr-descr {
+    font-style: normal;
+  }
+
+  &__form {
+    gap: 12px 20px;
+    margin-top: 9px;
+
+  }
+
+  &__label {
+    position: relative;
+    flex-direction: column;
+  }
+
+  &__error {
+    position: absolute;
+    top: -30px;
+    left: 24px;
+    font-size: 12px;
+    color: red;
+  }
+
+  &__input {
+    border: 1px solid $colorTextDark;
+    border-radius: 100px;
+    padding: 0 23px;
+    width: 270px;
+    height: 50px;
+    cursor: pointer;
+    @include transition;
+
+
+  }
+
+  &__form-btn {
+    border: 2px solid $colorBtn;
+    border-radius: 110px;
+    width: 329.19px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24.51px;
+    color: $colorBtn;
+    background-color: transparent;
+    cursor: pointer;
+    @include transition;
+  }
+
+  &__social-link {
+    max-width: 275px;
+
+    & svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__social-link_whatsapp {
+    margin-right: 16px;
+    color: #30bf39;
+  }
+
+  &__social-link_telegram {
+    color: #2aabee;
+  }
+
+
+  &__social-title {
+    margin-top: -5px;
+    margin-bottom: 6px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+}
+
+.section-map {
+  &__box {
+    width: 100%;
+    height: 700px;
+  }
+}
+
+[class*='ground-pane'] {
+  filter: grayscale(1);
+}
+
+.footer {
+  padding: 47px 0;
+  background-color: $colorFooterBackground;
+
+  &__container {
+    justify-content: space-between;
+  }
+
+  &__logo-box {
+    margin-top: 2px;
+    height: 42px;
+    @include transition;
+
+    & svg {
+      width: 173px;
+      height: 42px;
+    }
+  }
+
+  &__social-box {
+    gap: 20px;
+  }
+
+  &__social-link {
+    svg {
+      width: 45px;
+      height: 45px;
+      color: $colorBorder;
+      @include transition;
+    }
+  }
+}

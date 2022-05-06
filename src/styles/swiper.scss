@@ -1,0 +1,25 @@
+@import 'variables';
+@import 'mixin';
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.section-events__swiper .swiper-slide {
+  height: auto;
+}
+
+.swiper-button-disabled {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: $colorBorder;
+
+  &-active {
+    background: #666;
+  }
+}
