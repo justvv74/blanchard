@@ -21,6 +21,7 @@
   padding: 20px;
   visibility: hidden;
   opacity: 0;
+  overflow-x: auto;
   transition: opacity .1s linear, visibility .5s linear;
 
   &__box {
@@ -36,7 +37,7 @@
   }
 
   &__img {
-    max-width: 400px;
+    width: 400px;
     height: auto;
   }
 
@@ -91,11 +92,8 @@
 
 @media (max-width: 1023px) {
   .modal {
-    &__box {
-      height: 300px;
-    }
-
     &__img {
+      align-self: center;
       width: auto;
       height: 300px;
     }
@@ -104,6 +102,10 @@
 
 @media (max-width: 665px) {
   .modal {
+    &__box {
+      height: 300px;
+    }
+
     &__content {
       padding: 40px 20px;
     }
@@ -115,7 +117,6 @@
     padding: 50px 10px;
 
     &__img {
-      align-self: center;
       height: 60%;
       width: auto;
     }

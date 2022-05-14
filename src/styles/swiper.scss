@@ -9,7 +9,20 @@
   height: auto;
 }
 
-.swiper-button-disabled {
+.section-gallery .swiper-button-disabled {
+  opacity: .5;
+  pointer-events: none;
+
+  &:focus {
+    svg {
+      & path:first-child {
+        stroke: transparent;
+      }
+    }
+  }
+}
+
+.section-events .swiper-button-disabled {
   opacity: 0;
   visibility: hidden;
 }

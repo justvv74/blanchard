@@ -37,6 +37,7 @@ const styles = () => {
     .pipe(cleanCSS({
         level: 2,
     }))
+    .pipe(strip())
     .pipe(dest('prod'))
     .pipe(sourceMaps.write())
     .pipe(dest('dist'))
@@ -71,7 +72,7 @@ const htmlMinify = () => {
 }
 
 const svgSprites = () => {
-    return src('src/img/svg/**/*.svg')
+    return src('src/img/svg/*.svg')
     .pipe(svgSprite({
         mode: {
             stack: {

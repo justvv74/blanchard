@@ -1,36 +1,40 @@
-const resetField = document.querySelectorAll('.reset-field'),
-      drpdwnMenuBtn = document.querySelectorAll('.header__bottom-btn'),
-      drpdwnMenuItem = document.querySelectorAll('.header__drpdwn-link');
-      // resetBtn = document.querySelector('.reset-btn');
+document.addEventListener('DOMContentLoaded', function () {
+  const drpdwnMenuBtn = document.querySelectorAll('.header__bottom-btn'),
+    drpdwnMenuWindow = document.querySelectorAll('.header__drpdwn-menu')
 
-drpdwnMenuBtn.forEach(function (tabsBtn) {
-  tabsBtn.addEventListener('click', function (e) {
-    const path = e.currentTarget.dataset.path;
-    drpdwnMenuBtn.forEach(function (btn) {
-      btn.classList.remove('header__bottom-btn--active')
-    });
-    e.currentTarget.classList.add('header__bottom-btn--active');
+  // Открываем и закрываем ниспадающее меню по клику на кнопку
+  drpdwnMenuBtn.forEach(item => {
+    item.addEventListener("click", function () {
+      let btn = this;
+      let dropdown = this.parentElement.querySelector(".header__drpdwn-menu");
 
-    document.querySelectorAll('.header__drpdwn-menu').forEach(function (tabsBtn) {
-      tabsBtn.classList.remove('header__drpdwn-menu--active')
-    });
-    document.querySelector(`[data-target="${path}"]`).classList.add('header__drpdwn-menu--active');
+      drpdwnMenuBtn.forEach(el => {
+        if (el != btn) {
+          el.classList.remove("header__bottom-btn--active");
+        }
+      });
 
-    if (document.querySelector(`[data-target="${path}"]`).classList.contains('header__drpdwn-menu--active')) {
-      resetField.forEach(function (e) {
-        e.addEventListener('click', function() {
-          document.querySelector(`[data-target="${path}"]`).classList.remove('header__drpdwn-menu--active')
-          drpdwnMenuBtn.forEach(function (e) {
-            e.classList.remove('header__bottom-btn--active');
-          })
-        })
+      drpdwnMenuWindow.forEach(el => {
+        if (el != dropdown) {
+          el.classList.remove("header__drpdwn-menu--active");
+        }
       })
 
-      // resetBtn.addEventListener('click', function() {
-      //   console.log("test")
-      //   document.querySelector(`[data-target="${path}"]`).classList.remove('header__drpdwn-menu--active')
-      // })
-    }
-  });
-});
+      dropdown.classList.toggle("header__drpdwn-menu--active");
+      btn.classList.toggle("header__bottom-btn--active")
+    })
+  })
 
+  // Закрываем ниспадающее меню по клику на любую область
+  document.addEventListener("click", (e) => {
+    let target = e.target;
+    if (!target.closest(".header__bottom-btn")) {
+      drpdwnMenuWindow.forEach(el => {
+        el.classList.remove("header__drpdwn-menu--active");
+      })
+      drpdwnMenuBtn.forEach(el => {
+        el.classList.remove("header__bottom-btn--active");
+      });
+    }
+  })
+})

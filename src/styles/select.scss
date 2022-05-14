@@ -16,6 +16,10 @@
     background-color: transparent;
   }
 
+  &__list--dropdown .choices__list, .choices__list[aria-expanded] .choices__list {
+    background-color: $colorFooterBackground;
+  }
+
   &__list--single {
     padding: 0;
   }

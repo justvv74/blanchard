@@ -8,6 +8,15 @@
   padding: 26px 0 24px;
 }
 
+.ui-accordion .ui-state-active {
+  svg {
+    & path:last-child {
+      transform: rotateY(180deg);
+      transform-origin: 50% 50% 0
+    }
+  }
+}
+
 
 @media (max-width: 440px) {
   .ui-accordion .ui-accordion-header {

@@ -305,6 +305,33 @@
   &__nav-btn {
     &:focus {
       outline: none;
+
+      svg {
+        & path:first-child {
+          stroke: $colorFocus;
+        }
+      }
+    }
+
+    &:hover {
+      svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+        }
+      }
+    }
+
+    &:active {
+      svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+          stroke: $colorBtn;
+        }
+
+        & path:last-child {
+          stroke: $colorTextDark;
+        }
+      }
     }
   }
 
@@ -352,11 +379,23 @@
         color: $colorTextLight;
         background-color: $colorBtn;
       }
+
+      & svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+        }
+      }
     }
 
     &:hover {
       color: $colorBtn;
       border-color: $colorBtn;
+
+      & svg {
+        & path:first-child {
+          fill: $colorBtn;
+        }
+      }
     }
 
     &:active {
@@ -365,6 +404,13 @@
       & h3 {
         color: $colorFocusDark;
         background-color: transparent;
+      }
+
+      & svg {
+        & path:first-child {
+          fill: $colorBtn;
+          stroke: $colorFocusDark;
+        }
       }
     }
 
@@ -402,6 +448,39 @@
 }
 
 .section-events {
+  &__nav-btn {
+    &:focus {
+      outline: none;
+
+      svg {
+        & path:first-child {
+          stroke: $colorFocus;
+        }
+      }
+    }
+
+    &:hover {
+      svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+        }
+      }
+    }
+
+    &:active {
+      svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+          stroke: $colorFocus;
+        }
+
+        & path:last-child {
+          stroke: $colorTextLight;
+        }
+      }
+    }
+  }
+
   &__art-link {
     &:focus {
       color: $colorTextLight;
@@ -432,6 +511,36 @@
 }
 
 .section-projects {
+  &__tooltip {
+    &:focus
+    svg{
+      & path:first-child {
+        fill: $colorFocusLight;
+      }
+    }
+
+    &:hover {
+      svg{
+        & path:first-child {
+          fill: $colorFocusLight;
+        }
+      }
+    }
+
+    &:active {
+      svg{
+        & path:first-child {
+          fill: $colorFocusDark;
+          stroke: transparent;
+        }
+
+        & path:last-child {
+          fill: $colorTextLight;
+        }
+      }
+    }
+  }
+
   &__text-link {
     &:focus {
       color: $colorTextLight;
@@ -471,6 +580,33 @@
   &__nav-btn {
     &:focus {
       outline: none;
+
+      svg {
+        & path:first-child {
+          stroke: $colorFocus;
+        }
+      }
+    }
+
+    &:hover {
+      svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+        }
+      }
+    }
+
+    &:active {
+      svg {
+        & path:first-child {
+          fill: $colorFocusLight;
+          stroke: $colorFocus;
+        }
+
+        & path:last-child {
+          stroke: $colorTextLight;
+        }
+      }
     }
   }
 }

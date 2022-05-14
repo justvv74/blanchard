@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // swiper in Hero
   const swiperHero = new Swiper('.section-hero__swiper', {
     effect: 'fade',
-    // autoplay: {
-    //   delay: 5000
-    // }
+    autoplay: {
+      delay: 5000
+    }
   });
 
   // select in Gallery
@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const swiperGallery = new Swiper('.section-gallery__swiper', {
     slidesPerView: 1,
     spaceBetween: 32,
-    loop: true,
     navigation: {
       nextEl: '.section-gallery__button-next',
       prevEl: '.section-gallery__button-prev',
