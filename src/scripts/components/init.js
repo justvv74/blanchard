@@ -1,11 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // swiper in Hero
-    const swiperHero = new Swiper('.section-hero__swiper', {
-      effect: 'fade',
-      autoplay: {
-        delay: 5000
-      }
+  // swiper in Hero
+  const swiperHero = new Swiper('.section-hero__swiper', {
+    effect: 'fade',
+    autoplay: {
+      delay: 5000
+    }
+  });
+
+  // select in Gallery
+  const GalleryFilterSelect = document.querySelector('.section-gallery__filter-select'),
+    choices = new Choices(GalleryFilterSelect, {
+      searchEnabled: false,
+      itemSelectText: '',
     });
+
 
   // swiper in Gallery
   const swiperGallery = new Swiper('.section-gallery__swiper', {
