@@ -727,7 +727,8 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   &__second-col {
-    flex: 1 1 auto;
+    flex: 2 1 auto;
+    min-width: 437px;
   }
 
   &__list {
@@ -1067,6 +1068,7 @@ input[type="search"]::-webkit-search-results-decoration {
   border: 1px solid $colorBorder;
 
   &__container {
+    gap: 20px;
     justify-content: space-between;
   }
 
@@ -1080,6 +1082,7 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   &__form {
+    flex-wrap: wrap;
     gap: 12px 20px;
     margin-top: 9px;
 

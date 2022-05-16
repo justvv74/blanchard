@@ -1,63 +1,30 @@
-const { src, dest, series, watch} = require('gulp');
-const concat = require('gulp-concat');
-const htmlMin = require('gulp-htmlmin');
-const autoPrefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
-const svgSprite = require('gulp-svg-sprite');
-const image = require('gulp-image');
-const babel = require('gulp-babel');
-const notify = require('gulp-notify');
-const uglify = require('gulp-uglify-es').default;
-const sourceMaps = require('gulp-sourcemaps');
-const del = require('del');
-const sass = require('gulp-sass')(require('sass'));
-const strip = require('gulp-strip-comments');
-const browserSync = require('browser-sync').create();
+const { src, dest, series, watch} = require('gulp'),
+    concat = require('gulp-concat'),
+    htmlMin = require('gulp-htmlmin'),
+    autoPrefixer = require('gulp-autoprefixer'),
+    cleanCSS = require('gulp-clean-css'),
+    svgSprite = require('gulp-svg-sprite'),
+    image = require('gulp-image'),
+    babel = require('gulp-babel'),
+    notify = require('gulp-notify'),
+    uglify = require('gulp-uglify-es').default,
+    sourceMaps = require('gulp-sourcemaps'),
+    del = require('del'),
+    sass = require('gulp-sass')(require('sass')),
+    strip = require('gulp-strip-comments'),
+    webpack = require('webpack-stream'),
+    browserSync = require('browser-sync').create();
 
 const clean = () => {
     return del(['dist',
-        'prod',
+                'prod',
     ])
-    
 }
 
 const resources = () => {
     return src('src/resources/**')
     .pipe(dest('prod/resources'))
     .pipe(dest('dist/resources'))
-}
-
-const styles = () => {
-    return src('src/styles/**/*.css')
-    .pipe(sourceMaps.init())
-    .pipe(concat('main.css'))
-    .pipe(autoPrefixer({
-        cascade: false,
-    }))
-    .pipe(cleanCSS({
-        level: 2,
-    }))
-    .pipe(strip())
-    .pipe(dest('prod'))
-    .pipe(sourceMaps.write())
-    .pipe(dest('dist'))
-    .pipe(browserSync.stream())
-}
-
-const scssStyles = () => {
-    return src('src/styles/main.scss')
-    .pipe(sourceMaps.init())
-    .pipe(sass({
-        outputStyle: 'compressed',
-    }).on('error', sass.logError))  
-    .pipe(autoPrefixer({
-        cascade: false,
-    }))
-    // .pipe(strip())
-    .pipe(dest('prod'))
-    .pipe(sourceMaps.write())
-    .pipe(dest('dist'))
-    .pipe(browserSync.stream())
 }
 
 const htmlMinify = () => {
@@ -67,6 +34,51 @@ const htmlMinify = () => {
     }))
     .pipe(strip())
     .pipe(dest('prod'))
+    .pipe(dest('dist'))
+    .pipe(browserSync.stream())
+}
+
+const scssStyles = () => {
+    return src('src/styles/main.scss')
+    // .pipe(strip())
+    .pipe(sourceMaps.init())
+    .pipe(sass({
+        outputStyle: 'compressed',
+    }).on('error', sass.logError))  
+    .pipe(autoPrefixer({
+        cascade: false,
+    }))
+    .pipe(dest('prod'))
+    .pipe(sourceMaps.write())
+    .pipe(dest('dist'))
+    .pipe(browserSync.stream())
+}
+
+const scripts = () => {
+    return src('src/scripts/main.js')
+    .pipe(webpack({
+    }))
+    .pipe(dest('prod'))
+    .pipe(webpack({
+        devtool: 'source-map'
+    }))
+    .pipe(dest('dist'))
+    .pipe(browserSync.stream())
+}
+
+const scriptsLib = () => {
+    return src('src/scripts/plugins/*.js')
+    .pipe(sourceMaps.init())
+    .pipe(babel({
+        presets: ['@babel/env']
+    }))
+    .pipe(concat('lib.js'))
+    .pipe(uglify({
+        toplevel: true,
+    }).on('error', notify.onError()))
+    .pipe(strip())
+    .pipe(dest('prod'))
+    .pipe(sourceMaps.write())
     .pipe(dest('dist'))
     .pipe(browserSync.stream())
 }
@@ -82,26 +94,6 @@ const svgSprites = () => {
     }))
     .pipe(dest('prod/img'))
     .pipe(dest('dist/img'))
-}
-
-const scripts = () => {
-    return src([
-        'src/scripts/components/**/*.js',
-        'src/scripts/main.js'
-    ])
-    .pipe(sourceMaps.init())
-    .pipe(babel({
-        presets: ['@babel/env']
-    }))
-    .pipe(concat('app.js'))
-    .pipe(uglify({
-        toplevel: true,
-    }).on('error', notify.onError()))
-    .pipe(strip())
-    .pipe(dest('prod'))
-    .pipe(sourceMaps.write())
-    .pipe(dest('dist'))
-    .pipe(browserSync.stream())
 }
 
 const fonts = () => {
@@ -134,16 +126,16 @@ const watchFiles = () => {
 }
 
 watch('src/**/*.html', htmlMinify)
-// watch('src/styles/**/*.css', styles)
 watch('src/img/svg/**/*.svg', svgSprites)
-watch('src/scripts/**/*.js', scripts)
+watch(['src/scripts/components/*.js', 
+       'src/scripts/main.js'], scripts)
+watch('src/scripts/plugins/*.js', scriptsLib)
 watch('src/resources/**', resources)
 watch('src/styles/**/*.scss', scssStyles)
 watch('src/img/*.jpg', images)
 
 exports.clean = clean
-exports.styles = styles
 exports.scripts = scripts
 exports.scssStyles = scssStyles
 exports.htmlMinify = htmlMinify
-exports.default = series(clean, resources, htmlMinify, scssStyles, svgSprites, images, scripts, fonts, watchFiles)
+exports.default = series(clean, resources, htmlMinify, scssStyles, scripts, scriptsLib, svgSprites, images, fonts, watchFiles)

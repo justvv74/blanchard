@@ -1,18 +1,19 @@
-@import 'components/normalize';
-@import 'components/simplebar';
-@import 'components/choices.min';
-@import 'components/swiper-bundle.min';
-@import 'components/jquery-ui.structure.min';
-@import 'components/tooltipster.bundle.min';
-@import 'scroll';
-@import 'accordion';
-@import 'fonts';
-@import 'select';
-@import 'tooltip';
-@import 'form';
-@import 'modal';
-@import 'swiper';
-@import 'actions';
-@import 'common';
-@import 'media';
+@import 'plugins/normalize';
+@import 'plugins/simplebar';
+@import 'plugins/choices.min';
+@import 'plugins/swiper-bundle.min';
+@import 'plugins/jquery-ui.structure.min';
+@import 'plugins/tooltipster.bundle.min';
+
+@import 'components/scroll';
+@import 'components/accordion';
+@import 'components/fonts';
+@import 'components/select';
+@import 'components/tooltip';
+@import 'components/form';
+@import 'components/modal';
+@import 'components/swiper';
+@import 'components/actions';
+@import 'components/common';
+@import 'components/media';
 

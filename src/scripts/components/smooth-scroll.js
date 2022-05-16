@@ -13,15 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Добавляем/убираем, в случае смены ширины экрана
   mediaQuery.addEventListener("change", () => {
-    console.log('cadasfsdaf')
     if (mediaQuery.matches) {
-      console.log('true')
       document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
         e.setAttribute('href', '#artist-box')
       })
     document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
     } else {
-      console.log('false')
       document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
         e.removeAttribute('href', '#artist-box')
       })
