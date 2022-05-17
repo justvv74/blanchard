@@ -5,7 +5,8 @@ const form = document.querySelector('.section-feedback__form'),
   nameTitle = document.querySelector('#label-name'),
   phoneTitle = document.querySelector('#label-phone'),
   btnTitle = document.querySelector('#form-submit'),
-  formMessage = document.querySelector('.form-message');
+  formMessage = document.querySelector('.form-message'),
+  formMessageError = document.querySelector('.form-message_error');
 let error = false;
 
 // Валидация
@@ -81,23 +82,36 @@ form.addEventListener('submit', (e) => {
 function sendForm() {
   const encodeName = encodeURIComponent(inputName.value),
     encodePhone = encodeURIComponent(inputPhone.value),
-    formData = 'Имя=' + encodeName + '&Phone=' + encodePhone,
+    formData = 'name=' + encodeName + '&phone=' + encodePhone,
     xhr = new XMLHttpRequest();
 
-  xhr.open('POST', 'https://jsonplaceholder.typicode.com/posts', true);
+  xhr.open('POST', 'resources/mail.php', true);
   xhr.responseType = 'text';
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.send(formData);
   xhr.onload = () => {
-    if (xhr.status !== 200) {
-      formMessage.classList.add('form-message-visible');
+    if (xhr.status != 200) {
+      formMessageError.classList.add('form-message-visible')
       setTimeout(MessagePopap, 5000)
-      return;
+    } else {
+      formMessage.classList.add('form-message-visible')
+      setTimeout(MessagePopap, 5000)
+      btnTitle.setAttribute('disabled', true)
+      formInputs.forEach((e) => {
+        e.setAttribute('disabled', true)
+      })
+      form.reset()
     }
   }
+
+  xhr.onerror = () => {
+    formMessageError.classList.add('form-message-visible')
+    setTimeout(MessagePopap, 5000)
+  };
 
   // Убираем сообщение об отправке
   function MessagePopap() {
     formMessage.classList.remove('form-message-visible')
+    formMessageError.classList.remove('form-message-visible')
   }
 }

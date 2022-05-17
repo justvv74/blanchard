@@ -625,6 +625,12 @@
     &:active {
       background-color: transparent;
     }
+
+    &:disabled {
+      &:hover {
+        background-color: $colorBorder;
+      }
+    }
   }
 
   &__form-btn {
@@ -642,6 +648,13 @@
       border-color: $colorFocusLight;
       background-color: $colorFocusDark;
       outline: none;
+    }
+
+    &:disabled {
+      &:hover {
+        color: $colorBtn;
+        background-color: $colorBorder;
+      }
     }
   }
 

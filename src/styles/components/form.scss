@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixin';
 
 .form-message {
   z-index: 100;
@@ -12,7 +13,13 @@
   background-color: $colorBtn;
   visibility: hidden;
   opacity: 0;
-  transition: opacity .1s linear, visibility 1s linear;
+  @include transition;
+
+  &_error {
+    border-color: red;
+    color: red;
+    background-color: $colorBorder;
+  }
 }
 
 .form-message-visible {

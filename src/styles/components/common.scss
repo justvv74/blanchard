@@ -1110,7 +1110,10 @@ input[type="search"]::-webkit-search-results-decoration {
     cursor: pointer;
     @include transition;
 
-
+    &:disabled {
+      background-color: $colorBorder;
+      cursor: default;
+    }
   }
 
   &__form-btn {
@@ -1125,6 +1128,11 @@ input[type="search"]::-webkit-search-results-decoration {
     background-color: transparent;
     cursor: pointer;
     @include transition;
+
+    &:disabled {
+      background-color: $colorBorder;
+      cursor: no-drop;
+    }
   }
 
   &__social-link {

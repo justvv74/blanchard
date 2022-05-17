@@ -40,7 +40,6 @@ const htmlMinify = () => {
 
 const scssStyles = () => {
     return src('src/styles/main.scss')
-    // .pipe(strip())
     .pipe(sourceMaps.init())
     .pipe(sass({
         outputStyle: 'compressed',
@@ -54,11 +53,16 @@ const scssStyles = () => {
     .pipe(browserSync.stream())
 }
 
-const scripts = () => {
+const scriptsProd = () => {
     return src('src/scripts/main.js')
     .pipe(webpack({
     }))
     .pipe(dest('prod'))
+    .pipe(browserSync.stream())
+}
+
+const scriptsDist = () => {
+    return src('src/scripts/main.js')
     .pipe(webpack({
         devtool: 'source-map'
     }))
@@ -128,14 +132,16 @@ const watchFiles = () => {
 watch('src/**/*.html', htmlMinify)
 watch('src/img/svg/**/*.svg', svgSprites)
 watch(['src/scripts/components/*.js', 
-       'src/scripts/main.js'], scripts)
+       'src/scripts/main.js'], scriptsProd)
+watch(['src/scripts/components/*.js', 
+       'src/scripts/main.js'], scriptsDist)
 watch('src/scripts/plugins/*.js', scriptsLib)
 watch('src/resources/**', resources)
 watch('src/styles/**/*.scss', scssStyles)
 watch('src/img/*.jpg', images)
 
 exports.clean = clean
-exports.scripts = scripts
+exports.scripts = scriptsDist
 exports.scssStyles = scssStyles
 exports.htmlMinify = htmlMinify
-exports.default = series(clean, resources, htmlMinify, scssStyles, scripts, scriptsLib, svgSprites, images, fonts, watchFiles)
+exports.default = series(clean, resources, htmlMinify, scssStyles, scriptsProd, scriptsDist, scriptsLib, svgSprites, images, fonts, watchFiles)
