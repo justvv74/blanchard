@@ -130,7 +130,7 @@
 
     &__logo-box {
       margin-top: -6px;
-      margin-left: -2px;
+      margin-left: 3px;
 
       & svg {
         width: 210.6px;
@@ -156,14 +156,14 @@
   }
 
   .section-hero {
-    padding: 113px 0 114px;
+    padding: 113px 0 132px;
 
     &__title {
       margin-bottom: 11px;
     }
 
     &__text {
-      margin-bottom: 134px;
+      margin-bottom: 153px;
       max-width: 661px;
     }
 
@@ -181,6 +181,7 @@
   }
 
   .section-about-us {
+    padding-top: 80px;
     &__title {
       margin-bottom: 16px;
     }
@@ -227,8 +228,8 @@
     }
 
     &__box-list {
-      gap: 0 65px;
-      height: 412px;
+      gap: 1px 65px;
+      height: 384px;
     }
 
     &__item-img {
@@ -243,6 +244,7 @@
   }
 
   .section-events {
+    padding-top: 1px;
     padding-bottom: 60px;
 
     &__title {
@@ -289,6 +291,8 @@
   }
 
   .section-projects {
+    padding-top: 60px;
+
     &__title {
       margin-bottom: 16px;
     }
@@ -382,9 +386,13 @@
 
 @media (max-width: 768px) {
   .header {
+    &__top {
+      padding: 34px 0 30px;
+    }
     &__logo-box {
       margin-top: -6.5px;
-      margin-left: 3.5px;
+      margin-left: 2px;
+      height: 42px;
     }
 
     &__mobile-search-open {
@@ -396,7 +404,11 @@
   }
 
   .section-hero {
-    padding-bottom: 114px;
+    padding-bottom: 132.8px;
+
+    &__title {
+      line-height: 83px;
+    }
 
     &__swiper-slide_first {
       background-image: url('img/hero-1-768.jpg');
@@ -408,6 +420,12 @@
 
     &__swiper-slide_third {
       background-image: url('img/hero-3-768.jpg');
+    }
+  }
+
+  .section-about-us {
+    &__title {
+      margin-bottom: 15px;
     }
   }
 
@@ -442,7 +460,7 @@
     padding-bottom: 69px;
 
     &__title {
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
     &__text {
@@ -458,8 +476,8 @@
     }
 
     &__box-list {
-      gap: 0 60px;
-      height: 318px;
+      gap: 1px 59px;
+      height: 288px;
     }
 
     &__item-btn {
@@ -473,12 +491,12 @@
     &__art-img {
       width: 100%;
       & img {
-        margin-bottom: 22px;
+        margin-bottom: 21px;
       }
     }
 
     &__art-title {
-      margin-bottom: -1.5px;
+      margin-bottom: -.5px;
       margin-left: .5px;
     }
 
@@ -487,7 +505,7 @@
     }
 
     &__art-descr {
-      margin-top: .5px;
+      margin-top: 0;
       margin-left: 1.5px;
     }
   }
@@ -655,13 +673,13 @@
     &__logo-box {
       margin-top: 0;
       margin-right: 0;
-      margin-left: 0;
+      margin-left: -6px;
       width: 107px;
       height: 21px;
 
       svg {
         width: 107px;
-        height: 22.5px;
+        height: 22.3px;
       }
     }
 
@@ -730,8 +748,9 @@
     &__btn {
       border: 3px solid transparent;
       border-radius: 100px;
-      padding: 10px 15px 10px 17px;
+      padding: 11px 15px 11px 17px;
       font-size: 12px;
+      line-height: 12px;
     }
 
     &__swiper-slide_first {
@@ -827,7 +846,8 @@
 
 
     &__box-list {
-      min-height: 748px;
+      min-height: 768px;
+      gap: 1px;
     }
 
     &__item-text {
@@ -837,7 +857,7 @@
 
     &__art-img {
       img {
-        margin-bottom: 10.5px;
+        margin-bottom: 10px;
       }
     }
 
@@ -857,6 +877,10 @@
   }
 
   .section-events {
+    &__pagination-box {
+      bottom: -30px;
+    }
+
     &__title {
       margin-bottom: 12px;
     }
@@ -867,7 +891,7 @@
 
     &__img-descr {
       margin-right: -5px;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
     }
 
     &__img-time {
@@ -888,6 +912,10 @@
 
     &__text {
       margin-bottom: 10px;
+    }
+
+    &__tooltip {
+      margin-left: 0;
     }
 
     &__second-title {

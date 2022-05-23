@@ -288,7 +288,7 @@ input[type="search"]::-webkit-search-results-decoration {
   &__bottom-list {
     flex: auto;
     justify-content: space-between;
-    margin-right: 50px;
+    margin-right: 100px;
     margin-left: -1.5px;
     max-width: 1036px;
   }
@@ -419,7 +419,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .section-hero {
   position: relative;
-  padding: 140px 0 122px;
+  padding: 140px 0 139px;
 
   &__container {
     z-index: 9;
@@ -436,7 +436,7 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   &__text {
-    margin-bottom: 93px;
+    margin-bottom: 112px;
     max-width: 600px;
     font-size: 18px;
     font-weight: 700;
@@ -447,7 +447,7 @@ input[type="search"]::-webkit-search-results-decoration {
   &__btn {
     border: 3px solid transparent;
     border-radius: 100px;
-    padding: 21.5px 32.5px;
+    padding: 19.5px 32.5px;
     font-size: 18px;
     font-weight: 700;
     color: $colorTextLight;
@@ -485,7 +485,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .section-about-us {
-  padding: 80px 0 70px;
+  padding: 81px 0 70px;
 
   &__title {
     margin-bottom: 15px;
@@ -527,6 +527,7 @@ input[type="search"]::-webkit-search-results-decoration {
     flex-direction: column;
     margin-bottom: auto;
     color: $colorTextLight;
+    letter-spacing: .5px;
   }
 
   &__filter-select {
@@ -548,6 +549,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
   &__checkbox {
     padding-left: 20px;
+    width: 1px;
+    height: 1px;
     appearance: none;
     opacity: 0;
 
@@ -793,7 +796,7 @@ input[type="search"]::-webkit-search-results-decoration {
     flex-direction: column;
     flex-wrap: wrap;
     gap: 1px 60px;
-    height: 318px;
+    height: 288px;
   }
 
   &__box-item {
@@ -845,7 +848,6 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .section-events {
-  padding-top: 1px;
   padding-bottom: 20px;
 
   &__container {
@@ -888,7 +890,6 @@ input[type="search"]::-webkit-search-results-decoration {
 
   &__img-time {
     display: block;
-    margin-top: -1px;
     font-size: 12.3px;
   }
 
@@ -971,7 +972,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .section-projects {
-  padding-top: 60px;
+  padding-top: 61px;
   padding-bottom: 80px;
 
   &__title {
@@ -989,11 +990,16 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   &__tooltip {
-    margin: 0 2px -3px -1px;
-    margin-left: -1px;
+    display: inline-block;
+    margin: 0 6px -3px -1px;
+    width: 16px;
+    height: 16px;
+    font-size: 0;
     cursor: pointer;
 
     svg{
+      margin-top: 3px;
+      margin-bottom: -3px;
       width: 16px;
       height: 16px;
       @include transition;

@@ -30,5 +30,8 @@
     "sass": "^1.50.1",
     "webpack-stream": "^7.0.0"
   },
+  "dependencies": {
+    "webpack": "^5.72.1"
+  },
   "description": ""
 }
