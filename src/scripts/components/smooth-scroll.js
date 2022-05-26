@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
         e.setAttribute('href', '#artist-box')
       })
-    document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
+      document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
     } else {
       document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
         e.removeAttribute('href', '#artist-box')
@@ -27,24 +27,26 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   // Плавный скролл
-    const anchors = document.querySelectorAll('a[href*="#"]')
+  const anchors = document.querySelectorAll('a[href*="#"]')
 
-    anchors.forEach((e) => {
-      e.addEventListener("click", (event) => {
-        event.preventDefault();
-        const blockID = e.getAttribute('href')
-        document.querySelector('' + blockID).scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        })
+  anchors.forEach((e) => {
+    e.addEventListener("click", (event) => {
+      event.preventDefault();
+      const blockID = e.getAttribute('href')
+      document.querySelector('' + blockID).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       })
     })
+  })
 
-    const selectBtn = document.querySelector('.choices')
 
-    selectBtn.addEventListener('keydown', (e) => {
-      if (e.keyCode === 32 && e.target === selectBtn) {
-        e.preventDefault();
-      }
-    })
+  // Отклчение прокрутки для селекта
+  const selectBtn = document.querySelector('.choices')
+
+  selectBtn.addEventListener('keydown', (e) => {
+    if (e.keyCode === 32 && e.target === selectBtn) {
+      e.preventDefault();
+    }
+  })
 })

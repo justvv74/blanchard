@@ -318,11 +318,11 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     &--active {
-      color: $colorTextLight;
+      color: $colorFocusDark;
       background-color: transparent;
 
       & svg {
-        color: $colorTextLight;
+        color: $colorFocusDark;
         transform: rotateX(180deg);
       }
     }
@@ -784,8 +784,6 @@ input[type="search"]::-webkit-search-results-decoration {
     line-height: 50px;
   }
 
-
-
   &__item-box {
     flex: 1 1 auto;
     border-bottom: 1px solid $colorBorder;
@@ -795,7 +793,7 @@ input[type="search"]::-webkit-search-results-decoration {
   &__box-list {
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 1px 60px;
+    gap: 0 60px;
     height: 288px;
   }
 
@@ -804,10 +802,13 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   &__item-btn {
+    margin: 0;
+    border: none;
     border-bottom: 1px solid transparent;
-    padding: 4px 0;
+    padding: 0;
     line-height: 31px;
     color: $colorTextDark;
+    background-color: transparent;
     cursor: pointer;
 
     &--active {

@@ -197,6 +197,10 @@
         transform: rotateX(180deg);
       }
     }
+
+    &--active:focus {
+      background-color: transparent;
+    }
   }
 
   &__drpdwn-item   {
@@ -371,6 +375,7 @@
     }
   }
 
+  // Состояние активности в файле accordion.scss
   &__item-head {
     &:focus {
       outline: none;
@@ -402,7 +407,6 @@
       border-color: $colorFocusDark;
 
       & h3 {
-        color: $colorFocusDark;
         background-color: transparent;
       }
 
@@ -441,6 +445,11 @@
 
     &:active {
       border-color: transparent;
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+
+    &--active:focus {
       color: $colorFocusDark;
       background-color: transparent;
     }

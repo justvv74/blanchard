@@ -9,7 +9,19 @@
 }
 
 .ui-accordion .ui-state-active {
+  &:focus {
+    border-color: $colorFocusDark;
+
+    & h3 {
+      color: $colorFocusDark;
+      background-color: transparent;
+    }
+  }
+
   svg {
+    & path:first-child {
+      stroke: $colorFocusDark;
+    }
     & path:last-child {
       transform: rotateY(180deg);
       transform-origin: 50% 50% 0
