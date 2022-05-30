@@ -1,30 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Добавляем атрибут в каталог для скрола из списка к художнику
-  const mediaQuery = window.matchMedia('(max-width: 768px)')
+  const mediaQuery = window.matchMedia('(max-width: 768px)'),
+        artistsBtn = document.querySelectorAll('.section-catalog__item-btn'),
+        artistsTarget = document.querySelector('.section-catalog__first-col')
 
-  // Стартовое значение для мобильных
-  if (mediaQuery.matches) {
-    document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
-      e.setAttribute('href', '#artist-box')
-    })
-    document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
-  }
-
-  // Добавляем/убираем, в случае смены ширины экрана
+  // Добавляем/убираем атрибут, в случае изменения ширины экрана
   mediaQuery.addEventListener("change", () => {
     if (mediaQuery.matches) {
-      document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
-        e.setAttribute('href', '#artist-box')
-      })
-      document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
-    } else {
-      document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
-        e.removeAttribute('href', '#artist-box')
-      })
-      document.querySelector('.section-catalog__first-col').removeAttribute('id', 'artist-box')
+      artistsScroll ()
     }
   })
+
+  // Стартовое значение для desktop
+  if (mediaQuery.matches) {
+    artistsScroll ()
+  }
+
+  function artistsScroll () {
+    artistsBtn.forEach((e) => {
+        e.addEventListener("click", (event) => {
+          event.preventDefault();
+          artistsTarget.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          })
+        })
+    })
+  }
 
   // Плавный скролл
   const anchors = document.querySelectorAll('a[href*="#"]')
@@ -39,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     })
   })
-
 
   // Отклчение прокрутки для селекта
   const selectBtn = document.querySelector('.choices')

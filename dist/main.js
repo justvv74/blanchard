@@ -30,62 +30,68 @@ function validatePhone(phone) {
 }
 
 // Функция проверки полей формы
-form.onsubmit = () => {
-  const nameVal = inputName.value,
-    phoneVal = inputPhone.value,
-    emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+if (form) {
+  form.onsubmit = () => {
+    const nameVal = inputName.value,
+      phoneVal = inputPhone.value,
+      emptyInputs = Array.from(formInputs).filter(input => input.value === '');
 
-  formInputs.forEach((input) => {
-    if (input.value === '') {
-      input.classList.add('error')
-      btnTitle.textContent = 'Заполните обязательные поля'
-      error = true
-    } else {
-      input.classList.remove('error')
-      btnTitle.textContent = 'Заказать обратный звонок'
+    formInputs.forEach((input) => {
+      if (input.value === '') {
+        input.classList.add('error')
+        btnTitle.textContent = 'Заполните обязательные поля'
+        error = true
+      } else {
+        input.classList.remove('error')
+        btnTitle.textContent = 'Заказать обратный звонок'
+      }
+    })
+
+    if (emptyInputs.length !== 0) {
+      return false
     }
-  })
 
-  if (emptyInputs.length !== 0) {
-    return false
-  }
+    if (!validateName(nameVal)) {
+      inputName.classList.add('error')
+      nameTitle.textContent = 'Введите имя от 2 до 40 букв'
+      error = true
+      return false
+    } else {
+      inputName.classList.remove('error')
+      nameTitle.textContent = ''
+      error = false
+    }
 
-  if (!validateName(nameVal)) {
-    inputName.classList.add('error')
-    nameTitle.textContent = 'Введите имя от 2 до 40 букв'
-    error = true
-    return false
-  } else {
-    inputName.classList.remove('error')
-    nameTitle.textContent = ''
-    error = false
-  }
-
-  if (!validatePhone(phoneVal)) {
-    inputPhone.classList.add('error')
-    phoneTitle.textContent = 'Введите 11 цифр номера'
-    error = true
-    return false
-  } else {
-    inputPhone.classList.remove('error')
-    phoneTitle.textContent = ''
-    error = false
+    if (!validatePhone(phoneVal)) {
+      inputPhone.classList.add('error')
+      phoneTitle.textContent = 'Введите 11 цифр номера'
+      error = true
+      return false
+    } else {
+      inputPhone.classList.remove('error')
+      phoneTitle.textContent = ''
+      error = false
+    }
   }
 }
 
 // Убираем дефолтную отправку формы
-form.addEventListener('submit', handleForm);
-function handleForm(event) {
-  event.preventDefault();
+if (form) {
+  form.addEventListener('submit', handleForm);
+  function handleForm(event) {
+    event.preventDefault();
+  }
 }
 
 // Отправка на сервер
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (error != true) {
-    sendForm();
-  }
-});
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (error != true) {
+      sendForm();
+    }
+  });
+}
 
 // Отправка на сервер
 function sendForm() {
@@ -449,31 +455,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Добавляем атрибут в каталог для скрола из списка к художнику
-  const mediaQuery = window.matchMedia('(max-width: 768px)')
+  const mediaQuery = window.matchMedia('(max-width: 768px)'),
+        artistsBtn = document.querySelectorAll('.section-catalog__item-btn'),
+        artistsTarget = document.querySelector('.section-catalog__first-col')
 
-  // Стартовое значение для мобильных
-  if (mediaQuery.matches) {
-    document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
-      e.setAttribute('href', '#artist-box')
-    })
-    document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
-  }
-
-  // Добавляем/убираем, в случае смены ширины экрана
+  // Добавляем/убираем атрибут, в случае изменения ширины экрана
   mediaQuery.addEventListener("change", () => {
     if (mediaQuery.matches) {
-      document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
-        e.setAttribute('href', '#artist-box')
-      })
-      document.querySelector('.section-catalog__first-col').setAttribute('id', 'artist-box')
+      artistsScroll ()
     } else {
-      document.querySelectorAll('.section-catalog__item-btn').forEach(function (e) {
-        e.removeAttribute('href', '#artist-box')
-      })
-      document.querySelector('.section-catalog__first-col').removeAttribute('id', 'artist-box')
     }
   })
+
+  // Стартовое значение для desktop
+  if (mediaQuery.matches) {
+    artistsScroll ()
+  }
+
+  function artistsScroll () {
+    artistsBtn.forEach((e) => {
+        e.addEventListener("click", (event) => {
+          event.preventDefault();
+          artistsTarget.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          })
+        })
+    })
+  }
 
   // Плавный скролл
   const anchors = document.querySelectorAll('a[href*="#"]')
@@ -488,7 +497,6 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     })
   })
-
 
   // Отклчение прокрутки для селекта
   const selectBtn = document.querySelector('.choices')

@@ -21,62 +21,68 @@ function validatePhone(phone) {
 }
 
 // Функция проверки полей формы
-form.onsubmit = () => {
-  const nameVal = inputName.value,
-    phoneVal = inputPhone.value,
-    emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+if (form) {
+  form.onsubmit = () => {
+    const nameVal = inputName.value,
+      phoneVal = inputPhone.value,
+      emptyInputs = Array.from(formInputs).filter(input => input.value === '');
 
-  formInputs.forEach((input) => {
-    if (input.value === '') {
-      input.classList.add('error')
-      btnTitle.textContent = 'Заполните обязательные поля'
-      error = true
-    } else {
-      input.classList.remove('error')
-      btnTitle.textContent = 'Заказать обратный звонок'
+    formInputs.forEach((input) => {
+      if (input.value === '') {
+        input.classList.add('error')
+        btnTitle.textContent = 'Заполните обязательные поля'
+        error = true
+      } else {
+        input.classList.remove('error')
+        btnTitle.textContent = 'Заказать обратный звонок'
+      }
+    })
+
+    if (emptyInputs.length !== 0) {
+      return false
     }
-  })
 
-  if (emptyInputs.length !== 0) {
-    return false
-  }
+    if (!validateName(nameVal)) {
+      inputName.classList.add('error')
+      nameTitle.textContent = 'Введите имя от 2 до 40 букв'
+      error = true
+      return false
+    } else {
+      inputName.classList.remove('error')
+      nameTitle.textContent = ''
+      error = false
+    }
 
-  if (!validateName(nameVal)) {
-    inputName.classList.add('error')
-    nameTitle.textContent = 'Введите имя от 2 до 40 букв'
-    error = true
-    return false
-  } else {
-    inputName.classList.remove('error')
-    nameTitle.textContent = ''
-    error = false
-  }
-
-  if (!validatePhone(phoneVal)) {
-    inputPhone.classList.add('error')
-    phoneTitle.textContent = 'Введите 11 цифр номера'
-    error = true
-    return false
-  } else {
-    inputPhone.classList.remove('error')
-    phoneTitle.textContent = ''
-    error = false
+    if (!validatePhone(phoneVal)) {
+      inputPhone.classList.add('error')
+      phoneTitle.textContent = 'Введите 11 цифр номера'
+      error = true
+      return false
+    } else {
+      inputPhone.classList.remove('error')
+      phoneTitle.textContent = ''
+      error = false
+    }
   }
 }
 
 // Убираем дефолтную отправку формы
-form.addEventListener('submit', handleForm);
-function handleForm(event) {
-  event.preventDefault();
+if (form) {
+  form.addEventListener('submit', handleForm);
+  function handleForm(event) {
+    event.preventDefault();
+  }
 }
 
 // Отправка на сервер
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  if (error != true) {
-    sendForm();
-  }
-});
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (error != true) {
+      sendForm();
+    }
+  });
+}
 
 // Отправка на сервер
 function sendForm() {
