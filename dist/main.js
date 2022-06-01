@@ -456,33 +456,42 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
 
   const mediaQuery = window.matchMedia('(max-width: 768px)'),
-        artistsBtn = document.querySelectorAll('.section-catalog__item-btn'),
-        artistsTarget = document.querySelector('.section-catalog__first-col')
+    artistsBtn = document.querySelectorAll('.section-catalog__item-btn'),
+    artistsTarget = document.querySelector('.section-catalog__first-col');
 
-  // Добавляем/убираем атрибут, в случае изменения ширины экрана
-  mediaQuery.addEventListener("change", () => {
-    if (mediaQuery.matches) {
-      artistsScroll ()
-    } else {
-    }
-  })
-
-  // Стартовое значение для desktop
-  if (mediaQuery.matches) {
-    artistsScroll ()
-  }
-
-  function artistsScroll () {
+  // Плавный скролл в каталоге
+  function artistsScroll() {
     artistsBtn.forEach((e) => {
-        e.addEventListener("click", (event) => {
+      e.addEventListener("click", (event) => {
+        if (e.getAttribute('scroll') === null) {
           event.preventDefault();
           artistsTarget.scrollIntoView({
             behavior: "smooth",
             block: "start"
           })
-        })
+        }
+      })
     })
   }
+
+  // Стартовое значение скролла в каталоге для мобильного
+  if (mediaQuery.matches) {
+    artistsScroll()
+  }
+
+  // Добавляем/убираем скролл в каталоге, в случае изменения ширины экрана
+  mediaQuery.addEventListener("change", () => {
+    if (mediaQuery.matches) {
+      artistsBtn.forEach((e) => {
+        e.removeAttribute('scroll', 'none')
+      })
+      artistsScroll()
+    } else {
+      artistsBtn.forEach((e) => {
+        e.setAttribute('scroll', 'none')
+      })
+    }
+  })
 
   // Плавный скролл
   const anchors = document.querySelectorAll('a[href*="#"]')
